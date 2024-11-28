@@ -53,8 +53,16 @@ async function getMedia(constraints) {
     
     setInterval(() => {
       snap()
-    }, 50);
+    }, 10);
     snap()
   }
 
   main()
+
+  document.getElementById("gen").addEventListener("click", ()=>{
+    let min = parseInt(prompt("Min integer"))
+    let max = parseInt(prompt("Max integer"))
+    let out = randInt(min, max)
+
+    alert(out)
+  })
