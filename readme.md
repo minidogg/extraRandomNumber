@@ -1,0 +1,1 @@
+Silly website for generating a little more random numbers by sourcing randomness from the camera of the users. With permission of course.
