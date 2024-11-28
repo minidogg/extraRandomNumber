@@ -32,6 +32,9 @@ async function getMedia(constraints) {
     video.controls = true
     video.srcObject = stream
     document.body.appendChild(video)
+    window.addEventListener("click", ()=>{
+        video.play()
+    })
 
     var canvas = document.createElement("canvas");
     canvas.width = 640;
@@ -47,6 +50,7 @@ async function getMedia(constraints) {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixels = imageData.data;
       const reduced = pixels.reduce((v,c)=>v=Math.sin((v+c)%1000000000000000))
+      console.log(reduced)
       
       injectNum = reduced
     }
