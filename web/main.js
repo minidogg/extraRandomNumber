@@ -14,6 +14,15 @@ async function getMedia(constraints) {
   }
 
 
+  let injectNum = 0; // Number that will be sourced into helping generate the random numbers
+  function BetterMathRandom(){
+    return Math.abs(Math.cos(injectNum+Math.random()))
+  }
+  function randInt(min, max) {
+    return Math.floor(BetterMathRandom() * (max - min) ) + min;
+  }
+  
+
   async function main(){
     let stream = await getMedia({
         audio: false,
@@ -38,12 +47,13 @@ async function getMedia(constraints) {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixels = imageData.data;
       const reduced = pixels.reduce((v,c)=>v=Math.sin((v+c)%1000000000000000))
-      console.log(reduced)
+      
+      injectNum = reduced
     }
     
     setInterval(() => {
       snap()
-    }, 100);
+    }, 50);
     snap()
   }
 
